@@ -1,0 +1,46 @@
+﻿@page
+@model SPHackathon.Pages.Containers.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Container</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Container.ApprovedUsers)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Container.ApprovedUsers)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Container.ContainerName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Container.ContainerName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Container.LeadReviewer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Container.LeadReviewer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Container.ProjectLead)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Container.ProjectLead)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Container.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

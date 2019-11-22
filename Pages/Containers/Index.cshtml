@@ -1,0 +1,93 @@
+﻿@page
+@model SPHackathon.Pages.Containers.IndexModel
+
+@{
+    ViewData["Title"] = "Project";
+}
+@inject ApplicationDbContext context
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Model.Container.ContainerName Project</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Project</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <!-- Custom Tabs -->
+                <div class="card">
+                    <div class="card-header d-flex p-0">
+                        <h3 class="card-title p-3">Project info</h3>
+                        <ul class="nav nav-pills ml-auto p-2">
+                            <li class="nav-item"><a class="nav-link" asp-page="Edit" asp-route-ContainerID="@Model.containerID" data-toggle="tab">Edit</a></li>
+                        </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Project files</h3>
+
+                                <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Doc Type</th>
+                                            <th>File Name</th>
+                                            <th>Date Issued</th>
+                                            <th>Issuer</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var Document in Model.Container.LandBookRegistrations)
+                                        {
+                                            <tr>
+                                                <td>@Document.ID.Substring(0, 5)</td>
+                                                <td>Land Book</td>
+                                                <td>@Document.Name</td>
+                                                <td>@Document.DateIssued</td>
+                                                <td>@Document.Issuer</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- ./card -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </div>
+</section>

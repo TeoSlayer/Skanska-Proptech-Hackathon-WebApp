@@ -1,0 +1,202 @@
+﻿@page
+@model SPHackathon.Pages.Containers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Container Edit</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Container Edit</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form method="post">
+        <input asp-for="Container.ID" hidden />
+        <input asp-for="Container.Letters" hidden />
+        <input asp-for="Container.LandBookRegistrations" hidden />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">General</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label asp-for="Container.ContainerName">Container Name</label>
+                            <input asp-for="Container.ContainerName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Container.Description">Container Description</label>
+                            <textarea asp-for="Container.Description" class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Container.ProjectLead">Project Leader</label>
+                            <input asp-for="Container.ProjectLead" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Container.LeadReviewer">Head Reviewer</label>
+                            <input asp-for="Container.LeadReviewer" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Container.ApprovedUsers">Collaborators</label>
+                            <input asp-for="Container.ApprovedUsers" class="form-control">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <div class="col-md-6">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Files</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>File Size</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>Functional-requirements.docx</td>
+                                    <td>49.8005 kb</td>
+                                    <td class="text-right py-0 align-middle">
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                <tr>
+                                    <td>UAT.pdf</td>
+                                    <td>28.4883 kb</td>
+                                    <td class="text-right py-0 align-middle">
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                <tr>
+                                    <td>Email-from-flatbal.mln</td>
+                                    <td>57.9003 kb</td>
+                                    <td class="text-right py-0 align-middle">
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                <tr>
+                                    <td>Logo.png</td>
+                                    <td>50.5190 kb</td>
+                                    <td class="text-right py-0 align-middle">
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                <tr>
+                                    <td>Contract-10_12_2014.docx</td>
+                                    <td>44.9715 kb</td>
+                                    <td class="text-right py-0 align-middle">
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                <tr>
+                                    <td>Add File</td>
+                                    <td class="text-left py-0 align-left">
+                                        <input type="file" name="File">
+                                    </td>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a asp-page="Index" asp-route-ContainerID="@Model.containerID" class="btn btn-secondary">Cancel</a>
+                <input type="submit" value="Edit Container" class="btn btn-success float-right">
+                <a asp-page="Delete" asp-route-ContainerID="@Model.containerID" class="btn btn-danger float-right mr-2">Delete Container</a>
+            </div>
+        </div>
+    </form>
+</section>
+<!-- /.content -->
+<!--
+<h1>Edit</h1>
+
+<h4>Container</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Container.ApprovedUsers" class="control-label"></label>
+                <input asp-for="Container.ApprovedUsers" class="form-control" />
+                <span asp-validation-for="Container.ApprovedUsers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Container.ContainerName" class="control-label"></label>
+                <input asp-for="Container.ContainerName" class="form-control" />
+                <span asp-validation-for="Container.ContainerName" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Container.ID" />
+            <div class="form-group">
+                <label asp-for="Container.LeadReviewer" class="control-label"></label>
+                <input asp-for="Container.LeadReviewer" class="form-control" />
+                <span asp-validation-for="Container.LeadReviewer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Container.ProjectLead" class="control-label"></label>
+                <input asp-for="Container.ProjectLead" class="form-control" />
+                <span asp-validation-for="Container.ProjectLead" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+-->
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SPHackathon.Models;
 
 namespace SPHackathon.Data
 {
@@ -12,5 +13,6 @@ namespace SPHackathon.Data
             : base(options)
         {
         }
+        public DbSet<SPHackathon.Models.Container> Container { get; set; }
     }
 }

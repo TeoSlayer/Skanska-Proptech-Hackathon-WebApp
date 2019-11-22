@@ -15,6 +15,10 @@ namespace SPHackathon.Models
 
         public string ContainerName { get; set; }
 
+        [Display(Name = "Description")]
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string ID { get; set; }
