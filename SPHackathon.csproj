@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20191122150900_AddedDocumentsModelsAndContainers.cs" />
+    <Compile Remove="Data\Migrations\20191122150900_AddedDocumentsModelsAndContainers.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Models\NewFile.txt" />
   </ItemGroup>
 
@@ -22,6 +27,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Pages\Containers\" />
   </ItemGroup>
 
 </Project>

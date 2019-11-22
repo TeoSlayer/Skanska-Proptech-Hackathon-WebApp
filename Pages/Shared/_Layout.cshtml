@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    @RenderSection("Styles",false)
+    @RenderSection("Styles", false)
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -39,7 +39,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index.html" class="nav-link">Home</a>
+                    <a asp-page="Index" class="nav-link">Home</a>
                 </li>
             </ul>
 
@@ -57,7 +57,6 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-            
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -72,9 +71,9 @@
             <div class="sidebar">
                 @if (User.Identity.IsAuthenticated)
                 {
-                        string GravatarID = SPHackathon.Services.CalculateHashes.CalculateMD5Hash(
-                            User.Identity.Name
-                            .ToLower());
+                    string GravatarID = SPHackathon.Services.CalculateHashes.CalculateMD5Hash(
+                        User.Identity.Name
+                        .ToLower());
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
@@ -98,8 +97,7 @@
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                             <!-- Add icons to the links using the .nav-icon class
-                with font-awesome or any other icon font library -->
-
+                            with font-awesome or any other icon font library -->
 
                             <li class="nav-header"></li>
                             <li class="nav-item">
@@ -275,7 +273,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-           @RenderBody()
+            @RenderBody()
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -328,6 +326,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
 
-    @RenderSection("Scripts",false)
+    @RenderSection("Scripts", false)
 </body>
 </html>
