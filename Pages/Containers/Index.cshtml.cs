@@ -41,7 +41,7 @@ namespace SPHackathon.Pages.Containers
 
         {
             containerID = ContainerID;
-            Containers = _context.Container.Include(c => c.LandBookRegistrations);
+            Containers = _context.Container.Include(c => c.LandBookRegistrations).Include(c => c.Letters);
             Container = await Containers.Where(c => c.ID == ContainerID).FirstAsync();
             return Page();
         }

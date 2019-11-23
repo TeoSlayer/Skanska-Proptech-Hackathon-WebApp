@@ -30,10 +30,31 @@
                     <div class="card-header d-flex p-0">
                         <h3 class="card-title p-3">Project info</h3>
                         <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link" asp-page="Edit" asp-route-ContainerID="@Model.containerID" data-toggle="tab">Edit</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-page="/Documents/Create" asp-route-ContainerID="@Model.containerID">Add files</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-page="Edit" asp-route-ContainerID="@Model.containerID">Edit project</a></li>
                         </ul>
                     </div><!-- /.card-header -->
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-md">
+                                <b>Project leader</b> | @Model.Container.ProjectLead<br>
+                                <b>Head reviewer</b> | @Model.Container.LeadReviewer<br>
+                                <b>Collaborators</b> |
+                                @foreach (var user in Model.Container.ApprovedUsers.Split(','))
+                                {
+                                    string GravatarID = SPHackathon.Services.CalculateHashes.CalculateMD5Hash(
+user
+.ToLower());
+                    <img src="https://www.gravatar.com/avatar/@GravatarID?d=retro&r=x&s=48" class="img-circle elevation-2 m-2" alt="User Image" />
+                }
+                            </div>
+                            <div class="col-md">
+                                <b>Description</b>
+                                <p>
+                                    @Model.Container.Description
+                                </p>
+                            </div>
+                        </div>
 
                         <!-- /.tab-content -->
                     </div><!-- /.card-body -->
@@ -63,7 +84,7 @@
                                             <th>Doc Type</th>
                                             <th>File Name</th>
                                             <th>Date Issued</th>
-                                            <th>Issuer</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -74,7 +95,25 @@
                                                 <td>Land Book</td>
                                                 <td>@Document.Name</td>
                                                 <td>@Document.DateIssued</td>
-                                                <td>@Document.Issuer</td>
+                                                <td class="text-right py-0 align-middle">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <a asp-page="/Documents/View" asp-route-id="@Document.PhysicalPath" asp-route-type="landBook" asp-route-ContainerID="@Model.containerID" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        @foreach (var Document in Model.Container.Letters)
+                                        {
+                                            <tr>
+                                                <td>@Document.ID.Substring(0, 5)</td>
+                                                <td>Letter</td>
+                                                <td>@Document.Name</td>
+                                                <td>@Document.Date</td>
+                                                <td class="text-right py-0 align-middle">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <a asp-page="/Documents/View" asp-route-id="@Document.PhysicalPath" asp-route-type="letter" asp-route-ContainerID="@Model.containerID" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>

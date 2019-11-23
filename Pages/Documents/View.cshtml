@@ -1,0 +1,134 @@
+﻿@page
+@model SPHackathon.Pages.Documents.ViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Add File</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">View File</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form enctype="multipart/form-data" method="post">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">View file</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @if (Model.DocType == "landBook")
+                                {
+
+                                    <div id="LandBook">
+                                        <div class="form-group">
+                                            <label asp-for="LandBookRegistration.RequestNumber">Request Number</label>
+                                            <input asp-for="LandBookRegistration.RequestNumber" class="form-control" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="LandBookRegistration.LandBookNumber">Land Book Number</label>
+                                            <input asp-for="LandBookRegistration.LandBookNumber" class="form-control" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="LandBookRegistration.Issuer">Issuer</label>
+                                            <input asp-for="LandBookRegistration.Issuer" class="form-control" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="LandBookRegistration.IssuerSpecialty">Issuer Speciality</label>
+                                            <input asp-for="LandBookRegistration.IssuerSpecialty" class="form-control" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date:</label>
+
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                </div>
+                                                <input asp-for="LandBookRegistration.DateIssued" class="form-control" disabled data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false">
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>}
+                                else
+                                {
+                                    <div id="Letter">
+                                        <div class="form-group">
+                                            <label asp-for="Letter.Recipient">Recipient</label>
+                                            <input asp-for="Letter.Recipient" class="form-control" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Letter.RecipientAddress">Recipient Address</label>
+                                            <input asp-for="Letter.RecipientAddress" class="form-control" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Letter.InAttentionOf">In the attention of</label>
+                                            <input asp-for="Letter.InAttentionOf" class="form-control" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date:</label>
+
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                </div>
+                                                <input asp-for="Letter.Date" class="form-control" disabled data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false">
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @{
+                                string documentPath = "https://sphackathon.conveyor.cloud/uploads/";
+                                if (Model.DocType == "landBook")
+                                    documentPath += Model.LandBookRegistration.PhysicalPath;
+                                else
+                                    documentPath += Model.Letter.PhysicalPath;
+                                documentPath += "&embedded=true";
+
+                            }
+                            <div class="col-md-9">
+                                <iframe src="https://docs.google.com/gview?url=@documentPath"
+                                        style="width: 100%; height: 70vh">
+                                    <p>Your browser does not support iframes.</p>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <!-- /.card -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a asp-page="/Index" class="btn btn-secondary">Go back</a>
+            </div>
+        </div>
+    </form>
+</section>
+<!-- /.content -->

@@ -1,0 +1,201 @@
+﻿@page
+@model SPHackathon.Pages.Documents.CreateModel
+
+@{
+    ViewData["Title"] = "Add Document";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Add File</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Add File</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form enctype="multipart/form-data" method="post">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Add file</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label for="inputStatus">Document type</label>
+                            <select class="form-control custom-select" id="documentType">
+                                <option selected disabled>Select document type</option>
+                                <option>Finance/Decision ROI</option>
+                                <option>Finance/Declarations</option>
+                                <option>Finance/Fiscal Attention Certificate</option>
+                                <option>Finance/Invoice</option>
+                                <option>Finance/Registration VAT Purpose</option>
+                                <option>Finance/RUC</option>
+                                <option>Finance/Taxes</option>
+                                <option>Finance/WHT Statements</option>
+                                <option>Finance/Trial Balances</option>
+                                <option>Finance/Financial Statements</option>
+                                <option>Leasing/Lease Agreements</option>
+                                <option>Leasing/Handover Protocols</option>
+                                <option>Leasing/Insurance Certificates</option>
+                                <option>Leasing/Permits</option>
+                                <option>Leasing/Endorsements</option>
+                                <option>Leasing/Proof of Payment</option>
+                                <option>Leasing/Letter Bank Guarantee</option>
+                                <option>Leasing/Corporate Registration of the Tenant</option>
+                                <option>Leasing/Guarantees</option>
+                                <option>Asset/NDAs</option>
+                                <option>Asset/Insurances</option>
+                                <option>Asset/Reports</option>
+                                <option>Asset/Service Charge Proposals</option>
+                                <option>Asset/Studies</option>
+                                <option>Asset/Warranties</option>
+                                <option>Asset/Financial Statements</option>
+                                <option>Asset/Property Insurance</option>
+                                <option>Legal/Corporate/Incorporation</option>
+                                <option>Legal/Corporate/Shareholders Resolutions</option>
+                                <option>Legal/Corporate/Power of attorney</option>
+                                <option>Legal/Corporate/Trade register excerpts</option>
+                                <option>Legal/Corporate/HQ changes</option>
+                                <option>Legal/Corporate/Share Register</option>
+                                <option>Legal/Corporate/Statements</option>
+                                <option>Legal/Corporate/Administrators'mandate</option>
+                                <option>Legal/Land Ownership Title</option>
+                                <option>Legal/Land Book registration</option>
+                                <option>Legal/Building Ownership Title</option>
+                                <option>Legal/Agreements</option>
+                                <option>Project Management/Design documentation</option>
+                                <option>Project Management/Permits and Endorsements</option>
+                                <option>Project Management/Certificates</option>
+                                <option>Project Management/Measurement and Studies</option>
+                                <option>Project Management/IPC</option>
+                                <option>Project Management/CR</option>
+                                <option>Project Management/CP</option>
+                                <option>Project Management/PMI</option>
+                                <option>Project Management/RFI</option>
+                                <option>Project Management/TR</option>
+                                <option>Project Management/MAF</option>
+                                <option>Project Management/MoM</option>
+                                <option>Project Management/DCR</option>
+                                <option>Project Management/NCR</option>
+                                <option>Project Management/IR</option>
+                                <option>Project Management/T</option>
+                                <option>Project Management/RFR</option>
+                                <option>Project Management/SN</option>
+                                <option>Marketing/Photos</option>
+                                <option>Marketing/Visualisations</option>
+                                <option>Marketing/Brochures</option>
+                                <option>Marketing/Movies</option>
+                                <option>Marketing/Branding</option>
+                                <option>Misc/Letter</option>
+                            </select>
+                        </div>
+                        <div id="LandBook" style="display:none;">
+                            <div class="form-group">
+                                <label asp-for="landAndLetter.LandBookRegistration.RequestNumber">Request Number</label>
+                                <input asp-for="landAndLetter.LandBookRegistration.RequestNumber" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="landAndLetter.LandBookRegistration.LandBookNumber">Land Book Number</label>
+                                <input asp-for="landAndLetter.LandBookRegistration.LandBookNumber" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="landAndLetter.LandBookRegistration.Issuer">Issuer</label>
+                                <input asp-for="landAndLetter.LandBookRegistration.Issuer" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="landAndLetter.LandBookRegistration.IssuerSpecialty">Issuer Speciality</label>
+                                <input asp-for="landAndLetter.LandBookRegistration.IssuerSpecialty" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Date:</label>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                    </div>
+                                    <input asp-for="landAndLetter.LandBookRegistration.DateIssued" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div id="Letter" style="display:none;">
+                            <div class="form-group">
+                                <label asp-for="landAndLetter.Letter.Recipient">Recipient</label>
+                                <input asp-for="landAndLetter.Letter.Recipient" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="landAndLetter.Letter.RecipientAddress">Recipient Address</label>
+                                <input asp-for="landAndLetter.Letter.RecipientAddress" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="landAndLetter.Letter.InAttentionOf">In the attention of</label>
+                                <input asp-for="landAndLetter.Letter.InAttentionOf" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Date:</label>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                    </div>
+                                    <input asp-for="landAndLetter.Letter.Date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <input asp-for="UploadFile" type="file">
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <!-- /.card -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a href="project_detail.html" class="btn btn-secondary">Cancel</a>
+                <input type="submit" value="Save Changes" class="btn btn-success float-right">
+            </div>
+        </div>
+    </form>
+</section>
+<!-- /.content -->
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $("select").change(function () {
+
+            $("select option:selected").each(function () {
+                if ($(this).val() == "Legal/Land Book registration") {
+                    $('#LandBook').css('display', 'block');
+
+                    $('#Letter').css('display', 'none');
+                } else if ($(this).val() == "Misc/Letter") {
+                    $('#Letter').css('display', 'block');
+
+                    $('#LandBook').css('display', 'none');
+                }
+            });
+        });
+    </script>
+}

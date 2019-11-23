@@ -40,7 +40,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a asp-page="Index" class="nav-link">Home</a>
+                    <a asp-page="/Index" class="nav-link">Home</a>
                 </li>
             </ul>
 
@@ -64,7 +64,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index.html" class="brand-link">
+            <a asp-page="/Index" class="brand-link">
                 <span class="brand-text font-weight-light">Skanska<b>Vor</b></span>
             </a>
 
@@ -121,13 +121,42 @@
                             </li>
 
                             <li class="nav-header">CONTAINERS</li>
-                            @foreach (var Container in context.Container.ToList())
+                            @foreach (var Container in context.Container.Include(c => c.LandBookRegistrations).Include(c => c.Letters).ToList())
                             {
-                                <li class="nav-item">
+                                <li class="nav-item has-treeview">
                                     <a asp-page="/Containers/Index" asp-route-ContainerID="@Container.ID" class="nav-link">
                                         <i class="fas fa-circle nav-icon"></i>
-                                        <p>@Container.ContainerName</p>
+                                        <p>
+                                            @Container.ContainerName
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
                                     </a>
+                                    <ul class="nav nav-treeview">
+                                        @if (Container.LandBookRegistrations.Count != 0)
+                                        {
+                                            <li class="nav-item">
+                                                <a asp-page="/Containers/Index" asp-route-ContainerID="@Container.ID" class="nav-link">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Managed/Land Books</p>
+                                                </a>
+                                            </li>
+                                        }
+                                        @if (Container.Letters.Count != 0)
+                                        {
+                                            <li class="nav-item">
+                                                <a asp-page="/Containers/Index" asp-route-ContainerID="@Container.ID" class="nav-link">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Managed/Letters</p>
+                                                </a>
+                                            </li>
+                                        }
+                                        <li class="nav-item">
+                                            <a asp-page="/Containers/Index" asp-route-ContainerID="@Container.ID" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Unmanaged</p>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             }
                             <li class="nav-header">LABELS</li>
