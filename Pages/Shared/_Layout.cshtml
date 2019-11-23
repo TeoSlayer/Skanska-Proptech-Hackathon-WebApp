@@ -65,11 +65,16 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a asp-page="/Index" class="brand-link">
-                <span class="brand-text font-weight-light">Skanska<b>Vor</b></span>
+                <span class="brand-text font-weight-light">
+                    <img src="/dist/img/skanska-logo.png" style="
+    height: 25px;
+    /* color: white; */
+"><b class="align-middle">Vor</b>
+                </span>
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar" style="padding:0px;">
                 @if (User.Identity.IsAuthenticated)
                 {
                     string GravatarID = SPHackathon.Services.CalculateHashes.CalculateMD5Hash(
@@ -101,21 +106,21 @@
                             with font-awesome or any other icon font library -->
 
                             <li class="nav-header"></li>
-                            <li class="nav-item">
-                                <a href="pages/calendar.html" class="nav-link">
-                                    <i class="nav-icon far fa-calendar-alt"></i>
-                                    <p>
-                                        Calendar
-                                        <span class="badge badge-info right">2</span>
-                                    </p>
-                                </a>
-                            </li>
 
                             <li class="nav-item">
                                 <a asp-page="/Containers/Create" class="nav-link">
                                     <i class="nav-icon fas fa-folder-plus"></i>
                                     <p>
                                         New Container
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-page="/Documents/Forms" class="nav-link">
+                                    <i class="nav-icon fas fa-file"></i>
+                                    <p>
+                                        New Workflow
                                     </p>
                                 </a>
                             </li>
@@ -210,7 +215,7 @@
             <strong>Copyright &copy; 2019 <a href="http://qrobotics.eu">Quantum Robotics</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0.0
+                <b>Version</b> Alpha 1.6.13-DEV231
             </div>
         </footer>
 

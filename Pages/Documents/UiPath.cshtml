@@ -1,0 +1,55 @@
+﻿@page
+@model SPHackathon.Pages.Documents.UiPathModel
+
+@{
+    ViewData["Title"] = "UiPath";
+}
+
+<h1>UiPath</h1>
+
+<h4>Container</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Container.ApprovedUsers" class="control-label"></label>
+                <input asp-for="Container.ApprovedUsers" class="form-control" />
+                <span asp-validation-for="Container.ApprovedUsers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Container.ContainerName" class="control-label"></label>
+                <input asp-for="Container.ContainerName" class="form-control" />
+                <span asp-validation-for="Container.ContainerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Container.Description" class="control-label"></label>
+                <textarea asp-for="Container.Description" class="form-control"></textarea>
+                <span asp-validation-for="Container.Description" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Container.ID" />
+            <div class="form-group">
+                <label asp-for="Container.LeadReviewer" class="control-label"></label>
+                <input asp-for="Container.LeadReviewer" class="form-control" />
+                <span asp-validation-for="Container.LeadReviewer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Container.ProjectLead" class="control-label"></label>
+                <input asp-for="Container.ProjectLead" class="form-control" />
+                <span asp-validation-for="Container.ProjectLead" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
